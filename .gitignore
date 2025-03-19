@@ -1,2 +1,3 @@
 venv
-Rep Lhama
+-pytest_cache
+**/__pycache__
