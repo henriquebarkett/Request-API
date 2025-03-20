@@ -27,6 +27,8 @@ class SwapiApiConsumerSpy:
     def __init__(self) -> None:
         self.get_starships_response = namedtuple('GET_Starships', 'status_code request response')
         self.get_starships_attributes = {}
+        self.get_starships_information_response = namedtuple('GET_Starship_Info', 'status_code request response')
+        self.get_starships_information_atributes = {}
 
     def get_starships(self, page: int) -> any:
         ''' mock  to get_starships '''
@@ -35,3 +37,11 @@ class SwapiApiConsumerSpy:
         return self.get_starships_response(
             status_code=200, request=None, response={"results":[mock_starships(), mock_starships()]}
         )
+    
+    def get_starship_information(self, starship_id: int) -> any:
+        ''' mock  to get_starship_information '''
+
+        self.get_starships_information_atributes["starship_id"] = starship_id
+        return self.get_starships_information_response(
+            status_code=200, request=None, response=mock_starships()
+        )    
